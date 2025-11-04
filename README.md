@@ -10,6 +10,7 @@ Project Manager-Alina, Coder-Phi Huynh, Tester-Alioune Mbaye, Frontend Developer
 Project description:
 Our group project focuses on developing a Banking System using IntelliJ- JAVA. The system is designed to allow users to create and manage bank accounts, perform deposits and withdrawals, check balances, and maintain transaction records. It demonstrates the use of object-oriented programming principles. The project’s main goal is to simulate a real-world banking operation, but in simpler terms. Showing how, as a group, we work together to develop a successful running program.
 
+Task 2:
 Pseudocode:
 START {
 
@@ -51,3 +52,7 @@ FUNCTION isValidPassword(password) {
 
 } END FUNCTION
 
+Task 3: 
+Docker is a platform that lets you package applications and their dependencies into lightweight, portable containers. These containers ensure your app runs the same way on any system regardless of the operating system or setup. Everything it needs (like libraries, runtime, and configuration) is bundled inside the container. This makes development, testing, and deployment faster and more consistent.
+
+Task 4: 
