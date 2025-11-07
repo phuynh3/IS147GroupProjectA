@@ -56,3 +56,50 @@ Task 3:
 Docker is a platform that lets you package applications and their dependencies into lightweight, portable containers. These containers ensure your app runs the same way on any system regardless of the operating system or setup. Everything it needs (like libraries, runtime, and configuration) is bundled inside the container. This makes development, testing, and deployment faster and more consistent.
 
 Task 4: 
+
+ Overview
+
+In this task, we containerized a simple Java application using Docker and automated the build and push process to Docker Hub using GitHub Actions.
+
+Steps Performed
+
+1. Dockerfile Setup
+   Created a Dockerfile using the `openjdk:23` base image.
+   The file copies Java source files, compiles them, and runs the `HelloWorld` class.
+
+   ```dockerfile
+   FROM openjdk:23
+   WORKDIR /app
+   COPY src/ /app/
+   RUN javac *.java
+   CMD ["java", "HelloWorld"]
+   ```
+
+2. Docker Hub Configuration
+
+   * Logged into Docker Hub.
+   * Created a **Personal Access Token** with read/write/delete permissions.
+   * Saved credentials for use in GitHub Secrets (`DOCKER_USERNAME` and `DOCKER_PASSWORD`).
+
+3. GitHub Actions Workflow
+
+   * Created a workflow file: `.github/workflows/docker.yml`.
+   * Configured it to automatically build and push the Docker image to Docker Hub whenever changes are pushed to the `master` branch.
+
+4. Automation Trigger
+
+   * Committed and pushed changes to GitHub.
+   * The GitHub Action built the Docker image and pushed it to Docker Hub automatically.
+
+5. Run Docker Image
+   Pulled and ran the image from Docker Hub:
+
+   ```bash
+   docker pull your-dockerhub-username/hello-world:latest
+   docker run your-dockerhub-username/hello-world:latest
+   ```
+
+### Result
+
+Successfully automated the process of building and deploying a Dockerized Java app using GitHub Actions and Docker Hub.
+
