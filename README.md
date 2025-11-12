@@ -2,7 +2,7 @@
 Banking System 
 
 Members:
-Alina Moughal, Phi Huynh, Ashraf Kizito, Alioune Mbaye, Fox Zhang.  
+Alina Moughal, Phi Huynh, Ashraf Kizito, Alioune Mbaye, Fox Zhang, Jacob Kucinski.  
 
 Roles: 
 Project Manager-Alina, Coder-Phi Huynh, Tester-Alioune Mbaye, Frontend Developer-Fox Zhang, Systems Analyst-Ashraf Kizito. 
