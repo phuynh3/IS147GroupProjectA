@@ -103,3 +103,71 @@ Steps Performed
 
 Successfully automated the process of building and deploying a Dockerized Java app using GitHub Actions and Docker Hub.
 
+ask 4: JavaDocs & GitHub Pages
+
+This task involves adding JavaDoc comments to the project, generating documentation, and hosting it using GitHub Pages.
+
+📝 JavaDocs Added
+
+Java classes and methods were updated with JavaDoc comments using tags like:
+
+/**
+ * Example description.
+ * @author Name
+ * @version 1.0
+ */
+
+🧠 Generating JavaDocs
+Option 1: IntelliJ IDEA
+
+Go to Tools → Generate JavaDoc…
+
+Set Output directory: docs/
+
+Select project scope
+
+Generate and open docs/index.html
+
+Option 2: Terminal
+javadoc -d docs -sourcepath src -subpackages your.package.name
+
+
+Example:
+
+javadoc -d docs -sourcepath src -subpackages com.example.myapp
+
+🌐 Hosting with GitHub Pages
+
+Go to Settings → Pages
+
+Source:
+
+Branch: main
+
+Folder: /docs
+
+Save
+
+Your docs will be available at:
+https://your-username.github.io/your-repo-name/
+
+📄 Why JavaDocs?
+
+Improves readability
+
+Helps maintain and understand the code
+
+Creates professional project documentation
+
+📤 Submission Checklist
+
+Code pushed to GitHub
+
+JavaDocs generated and hosted
+
+Stories created on GitHub project board
+
+README updated
+
+Submit GitHub repo URL + GitHub Pages URL
+
