@@ -159,15 +159,5 @@ Helps maintain and understand the code
 
 Creates professional project documentation
 
-📤 Submission Checklist
 
-Code pushed to GitHub
-
-JavaDocs generated and hosted
-
-Stories created on GitHub project board
-
-README updated
-
-Submit GitHub repo URL + GitHub Pages URL
 
