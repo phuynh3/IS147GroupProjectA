@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+
+public class BankApp {
+
+
+   private static final Scanner input = new Scanner(System.in);
+   private static Bank bank = new Bank("My Beginner Bank");
+
+
+   public static void main(String[] args) {
+
+
+       int choice;
+       do {
+           printMenu();
+           System.out.print("Enter your choice: ");
+
+
+           while (!input.hasNextInt()) {
+               System.out.println("Please enter a number.");
+               input.nextLine();
+           }
+           choice = input.nextInt();
+           input.nextLine();
+
+
+           switch (choice) {
+               case 1:
+                   createAccount();
+                   break;
+               case 2:
+                   deposit();
+                   break;
+               case 3:
+                   withdraw();
+                   break;
+               case 4:
+                   showAccount();
+                   break;
+               case 0:
+                   System.out.println("Thank you for using the bank system!");
+                   break;
+               default:
+                   System.out.println("Invalid option.");
+                   break;
+           }
+
+
+       } while (choice != 0);
+
+
+       input.close();
+   }
+
+
+   private static void printMenu() {
