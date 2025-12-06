@@ -284,6 +284,132 @@ public class BankApp {
         }
     }
 }
+import java.util.Date;
+import java.util.Random;
+
+public class Bank {
+
+    private String name;
+    private Account[] accounts;
+    private int accountCount;
+
+    private static final int MAX_ACCOUNTS = 100;
+    private static int numberOfBanks = 0;
+
+    public Bank(String name) {
+        this.name = name;
+        this.accounts = new Account[MAX_ACCOUNTS];
+        this.accountCount = 0;
+        numberOfBanks++;
+    }
+
+    public static int getNumberOfBanks() {
+        return numberOfBanks;
+    }
+
+    public Account openCheckingAccount(String ownerName, double initialDeposit) {
+        if (accountCount >= MAX_ACCOUNTS) {
+            System.out.println("Bank is full.");
+            return null;
+        }
+
+        int num = generateAccountNumber();
+        Date date = new Date();
+
+        Account newAcc = new CheckingAccount(num, ownerName, initialDeposit, date);
+        accounts[accountCount] = newAcc;
+        accountCount++;
+
+        System.out.println("Account created: #" + num + " | Owner: " + ownerName);
+        return newAcc;
+    }
+
+    public Account findAccount(int accountNumber) {
+        for (int i = 0; i < accountCount; i++) {
+            if (accounts[i].getAccountNumber() == accountNumber) {
+                return accounts[i];
+            }
+        }
+        return null;
+    }
+
+    public Account findAccount(String ownerName) {
+        for (int i = 0; i < accountCount; i++) {
+            if (accounts[i].getOwnerName().equalsIgnoreCase(ownerName.trim())) {
+                return accounts[i];
+            }
+        }
+        return null;
+    }
+
+    private int generateAccountNumber() {
+        return 100000 + new Random().nextInt(900000);
+    }
+}
+import java.util.Date;
+
+public abstract class Account {
+
+    private int accountNumber;
+    private String ownerName;
+    private double balance;
+    private Date openedOn;
+
+    public Account(int accountNumber, String ownerName, double balance, Date openedOn) {
+        this.accountNumber = accountNumber;
+        this.ownerName = ownerName;
+        this.balance = balance;
+        this.openedOn = openedOn;
+    }
+
+    public int getAccountNumber() { return accountNumber; }
+    public String getOwnerName() { return ownerName; }
+    public double getBalance() { return balance; }
+    public Date getOpenedOn() { return openedOn; }
+
+    protected void setBalance(double bal) { balance = bal; }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    public abstract boolean withdraw(double amount);
+
+    public String toString() {
+        return "Account #" + accountNumber + " | Owner: " + ownerName +
+                " | Balance: $" + balance;
+    }
+}
+import java.util.Date;
+
+public class CheckingAccount extends Account {
+
+    private static final double OVERDRAFT_LIMIT = -100.0;
+
+    public CheckingAccount(int accountNumber, String ownerName,
+                           double balance, Date openedOn) {
+        super(accountNumber, ownerName, balance, openedOn);
+    }
+
+    @Override
+    public boolean withdraw(double amount) {
+        double newBalance = getBalance() - amount;
+
+        if (amount > 0 && newBalance >= OVERDRAFT_LIMIT) {
+            setBalance(newBalance);
+            return true;
+        }
+        return false;
+    }
+
+    public void deposit(double amount, String note) {
+        this.deposit(amount);
+        System.out.println("Note: " + note.toUpperCase());
+    }
+}
+
 
 
 
